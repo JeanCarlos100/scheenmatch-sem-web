@@ -1,8 +1,6 @@
 package br.com.alura.scheenmatch;
 
-import br.com.alura.scheenmatch.model.DadosSerie;
-import br.com.alura.scheenmatch.service.ConsumoAPI;
-import br.com.alura.scheenmatch.service.ConverteDados;
+import br.com.alura.scheenmatch.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,13 +13,16 @@ public class ScheenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		var consumoAPI = new ConsumoAPI();
-		var json = consumoAPI.obterDados("http://www.omdbapi.com/?t=impuros&apikey=3ee820f8");
-		System.out.println(json);
+		Principal principal = new Principal();
+		principal.exibeMenu();
 
-		ConverteDados converteDados = new ConverteDados();
-		DadosSerie dados = converteDados.obterDados(json, DadosSerie.class);
-
-		System.out.println(dados);
+	//		List<DadosTemporadas> temporadas = new ArrayList<>();
+	//		for (int i = 1 ; i <= dados.totalTemporada(); i++){
+	//			json = consumoAPI.obterDados("http://www.omdbapi.com/?t=Impuros&season="+i+"&apikey=3ee820f8");
+	//			DadosTemporadas dadosTemporadas = converteDados.obterDados(json, DadosTemporadas.class);
+	//			temporadas.add(dadosTemporadas);
+	//		}
+	//
+	//		temporadas.forEach(System.out::println);
 	}
 }
